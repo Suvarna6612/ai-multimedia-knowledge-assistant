@@ -1,0 +1,4 @@
+Hello everyone, welcome to this demo, so we are going to learn about Java and Springboot
+Today, what is Java and what is Springboot?
+As we all know, Java is an exceptional independent language and Springboot is a framework of Java
+And finally, we are talking about Docker and Kubernetes, and we also deploy all the projects we have done in GitHub
