@@ -16,8 +16,12 @@ function ChatBox({ fileId }) {
       const response = await axios.post(
         "https://ai-multimedia-knowledge-assistant.onrender.com/api/questions/ask",
         {
-          fileId,
-          question,
+          question: question
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
         }
       );
 
