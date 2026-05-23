@@ -54,7 +54,7 @@ function App() {
                   id="media-player"
                   controls
                   style={{ width: "100%", marginTop: "20px" }}
-                  src={`http://localhost:8080/uploads/${uploadData.fileName}`}
+                  src={`https://ai-multimedia-knowledge-assistant.onrender.com/uploads/${uploadData.fileName}`}
                 />
               ) : (
                 <video
@@ -66,7 +66,7 @@ function App() {
                     marginTop: "20px",
                     borderRadius: "10px",
                   }}
-                  src={`http://localhost:8080/uploads/${uploadData.fileName}`}
+                  src={`https://ai-multimedia-knowledge-assistant.onrender.com/uploads/${uploadData.fileName}`}
                 />
               )}
             </div>

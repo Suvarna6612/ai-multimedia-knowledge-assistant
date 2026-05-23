@@ -22,7 +22,7 @@ function FileUpload({ onUploadSuccess }) {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:8080/api/files/upload",
+        "https://ai-multimedia-knowledge-assistant.onrender.com/api/questions/ask",
         formData
       );
 
