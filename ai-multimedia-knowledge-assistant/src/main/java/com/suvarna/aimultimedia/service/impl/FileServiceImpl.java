@@ -27,9 +27,7 @@ public class FileServiceImpl implements FileService {
     private final SummaryService summaryService;
     private final TranscriptionService transcriptionService;
 
-    @Value("${app.upload-dir:uploads}")
-    private String uploadDir;
-
+    private final String uploadDir = System.getProperty("java.io.tmpdir");
     public FileServiceImpl(
             UploadedFileRepository uploadedFileRepository,
             PdfService pdfService,
