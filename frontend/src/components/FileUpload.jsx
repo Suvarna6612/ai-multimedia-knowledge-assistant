@@ -22,9 +22,14 @@ function FileUpload({ onUploadSuccess }) {
       setLoading(true);
 
       const response = await axios.post(
-        "https://ai-multimedia-knowledge-assistant.onrender.com/api/questions/ask",
-        formData
-      );
+                         "https://ai-multimedia-knowledge-assistant.onrender.com/api/files/upload",
+                         formData,
+                         {
+                           headers: {
+                             "Content-Type": "multipart/form-data",
+                           },
+                         }
+                       );
 
       onUploadSuccess(response.data);
       alert("File uploaded successfully!");
