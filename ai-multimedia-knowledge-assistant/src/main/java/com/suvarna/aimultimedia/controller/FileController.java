@@ -6,6 +6,7 @@ import com.suvarna.aimultimedia.service.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
 
 @RestController
 @RequestMapping("/api/files")
@@ -15,7 +16,10 @@ public class FileController {
 
     private final FileService fileService;
 
-    @PostMapping("/upload")
+    @PostMapping(
+            value = "/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE
+    )
     public FileUploadResponseDto uploadFile(
             @RequestParam("file") MultipartFile file) throws Exception {
 
