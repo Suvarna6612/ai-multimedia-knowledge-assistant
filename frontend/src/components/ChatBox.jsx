@@ -14,7 +14,7 @@ function ChatBox({ fileId }) {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:8080/api/questions/ask",
+        "https://ai-multimedia-knowledge-assistant.onrender.com/api/questions/ask",
         {
           question: question
         },
