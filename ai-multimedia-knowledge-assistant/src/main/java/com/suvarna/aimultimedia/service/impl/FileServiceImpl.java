@@ -58,10 +58,14 @@ public class FileServiceImpl implements FileService {
         if (fileType == FileType.PDF) {
             extractedText = pdfService.extractText(targetPath.toFile());
         } else if (fileType == FileType.AUDIO || fileType == FileType.VIDEO) {
-            extractedText = transcriptionService.transcribe(targetPath.toFile());
+            extractedText = "Transcription temporarily unavailable.";
         }
 
-        String summary = summaryService.generateSummary(extractedText);
+        String summary = "Summary skipped for large media files.";
+
+        if (fileType == FileType.PDF) {
+            summary = summaryService.generateSummary(extractedText);
+        }
 
         UploadedFile uploadedFile = UploadedFile.builder()
                 .fileName(originalName)

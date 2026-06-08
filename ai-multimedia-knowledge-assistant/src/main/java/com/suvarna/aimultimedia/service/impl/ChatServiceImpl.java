@@ -1,47 +1,78 @@
 package com.suvarna.aimultimedia.service.impl;
 
 import com.suvarna.aimultimedia.service.ChatService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.ai.chat.client.ChatClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
-@RequiredArgsConstructor
 public class ChatServiceImpl implements ChatService {
 
-    private final ChatClient.Builder chatClientBuilder;
+    @Value("${groq.api.key}")
+    private String groqApiKey;
+
+    private final String GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
     @Override
     public String askQuestion(String context, String question) {
-        System.out.println("=== ChatService Started ===");
-        System.out.println("Question: " + question);
 
-        String prompt = """
-        You are a helpful assistant.
+        try {
 
-        Answer the question only using the provided context.
-        Keep the answer concise and factual.
-        Do not make assumptions beyond the context.
+            RestTemplate restTemplate = new RestTemplate();
 
-        Context:
-        %s
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.setBearerAuth(groqApiKey);
 
-        Question:
-        %s
-        """.formatted(context, question);
+            JSONObject body = new JSONObject();
 
-        System.out.println("Calling Ollama...");
+            body.put("model", "llama-3.1-8b-instant");
 
-        String response = chatClientBuilder
-                .build()
-                .prompt()
-                .user(prompt)
-                .call()
-                .content();
+            JSONArray messages = new JSONArray();
 
-        System.out.println("Ollama Response: " + response);
-        System.out.println("=== ChatService Finished ===");
+            JSONObject systemMessage = new JSONObject();
+            systemMessage.put("role", "system");
+            systemMessage.put("content",
+                    "Answer questions only from the provided document content.");
 
-        return response;
+            JSONObject userMessage = new JSONObject();
+            userMessage.put("role", "user");
+            userMessage.put("content",
+                    "Document Content:\n" +
+                            context.substring(0, Math.min(context.length(), 4000)) +
+                            "\n\nQuestion:\n" + question);
+
+            messages.put(systemMessage);
+            messages.put(userMessage);
+
+            body.put("messages", messages);
+
+            HttpEntity<String> entity =
+                    new HttpEntity<>(body.toString(), headers);
+
+            ResponseEntity<String> response =
+                    restTemplate.exchange(
+                            GROQ_URL,
+                            HttpMethod.POST,
+                            entity,
+                            String.class
+                    );
+
+            JSONObject jsonResponse =
+                    new JSONObject(response.getBody());
+
+            return jsonResponse
+                    .getJSONArray("choices")
+                    .getJSONObject(0)
+                    .getJSONObject("message")
+                    .getString("content");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
     }
 }

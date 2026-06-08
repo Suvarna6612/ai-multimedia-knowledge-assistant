@@ -1,6 +1,6 @@
 package com.suvarna.aimultimedia.service.impl;
 
-import com.suvarna.aimultimedia.service.AiService;
+import com.suvarna.aimultimedia.service.ChatService;
 import com.suvarna.aimultimedia.service.PdfService;
 import lombok.RequiredArgsConstructor;
 import org.apache.pdfbox.Loader;
@@ -15,7 +15,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class PdfServiceImpl implements PdfService {
 
-    private final AiService aiService;
+    private final ChatService chatService;
 
     @Override
     public String extractText(File file) {
@@ -30,7 +30,10 @@ public class PdfServiceImpl implements PdfService {
     @Override
     public String summarizePdf(MultipartFile file) {
         String text = extractText(convertToFile(file));
-        return aiService.generateSummary(text);
+        return chatService.askQuestion(
+                text,
+                "Summarize this PDF in concise bullet points"
+        );
     }
 
     private File convertToFile(MultipartFile multipartFile) {

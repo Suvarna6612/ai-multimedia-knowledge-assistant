@@ -25,6 +25,8 @@ public class QuestionController {
     public ResponseEntity<ApiResponseDto<QuestionResponseDto>> askQuestion(
             @RequestBody ChatRequestDto request) {
 
+        System.out.println("QUESTION ENDPOINT HIT");
+
         // Get latest uploaded file
         UploadedFile latestFile = uploadedFileRepository
                 .findTopByOrderByCreatedAtDesc()
