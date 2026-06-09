@@ -2,7 +2,7 @@
 
 AI Multimedia Knowledge Assistant is a full-stack AI-powered platform designed to process, analyze, and interact with multimedia content including PDFs, audio files, and videos. The application enables users to upload multimedia data, generate AI-powered summaries, perform contextual question answering, transcribe speech content, and navigate directly to relevant timestamps within media files.
 
-The system combines modern full-stack engineering with AI-driven multimedia processing using Spring Boot, React, PostgreSQL, Whisper AI, Ollama Local LLMs, Groq Cloud Inference, and FFmpeg.
+The system combines modern full-stack engineering with AI-driven multimedia processing using Spring Boot, React, PostgreSQL, Spring AI, Whisper AI, Ollama Local LLMs, Groq Cloud Inference, and FFmpeg.
 
 ---
 
@@ -186,6 +186,7 @@ This approach enables:
 
 ## AI & Multimedia
 
+* Spring AI
 * Ollama
 * Groq API
 * Whisper AI
