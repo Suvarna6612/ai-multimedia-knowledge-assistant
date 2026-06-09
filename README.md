@@ -1,172 +1,401 @@
-# AI Multimedia Knowledge Assistant
+# AI Multimedia Knowledge Assistant 🚀
 
-An intelligent full-stack application that allows users to upload PDF, audio, and video files, automatically extracts and summarizes their content, and answers natural language questions using AI-powered semantic search. For audio and video files, the application also provides relevant timestamps so users can jump directly to the most relevant moment in the media.
+AI Multimedia Knowledge Assistant is a full-stack AI-powered platform designed to process, analyze, and interact with multimedia content including PDFs, audio files, and videos. The application enables users to upload multimedia data, generate AI-powered summaries, perform contextual question answering, transcribe speech content, and navigate directly to relevant timestamps within media files.
 
----
-
-## 🚀 Features
-
-- Upload PDF, MP3, WAV, MP4, and other multimedia files
-- Extract text from PDF documents
-- Transcribe audio and video files
-- Generate AI-powered summaries
-- Ask questions about uploaded content
-- Retrieve relevant timestamps from transcripts
-- Play media from exact timestamps
-- Store metadata and summaries in PostgreSQL
-- RESTful API with Spring Boot
-- Modern React frontend
-- Dockerized backend and database
+The system combines modern full-stack engineering with AI-driven multimedia processing using Spring Boot, React, PostgreSQL, Whisper AI, Ollama Local LLMs, Groq Cloud Inference, and FFmpeg.
 
 ---
 
-## 🛠️ Tech Stack
+# 🌐 Live Deployment
 
-### Backend
-- Java 21
-- Spring Boot 3
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- Maven
-- Ollama
+## Frontend Application
 
-### Frontend
-- React
-- Vite
-- Axios
-- CSS
+```text
+https://ai-multimedia-knowledge-assistant-1.onrender.com
+```
 
-### DevOps
-- Docker
-- Docker Compose
-- Git
-- GitHub
+## Backend API
+
+```text
+https://ai-multimedia-knowledge-assistant.onrender.com
+```
 
 ---
 
-## 🏗️ Architecture
+# ✨ Core Features
 
-React Frontend (Vite)
-        ↓
-Spring Boot REST API
-        ↓
-Business Services
-        ↓
-PostgreSQL Database
-        ↓
-Ollama Local AI Model
+## 📄 Intelligent PDF Processing
+
+* Extracts textual content from uploaded PDF documents
+* Generates AI-powered contextual summaries
+* Supports semantic question answering over document content
+
+## 🎧 Speech-to-Text Audio Transcription
+
+* Converts uploaded audio files into searchable transcripts
+* Supports MP3, WAV, MPEG, AAC, and M4A formats
+* Powered by Whisper AI speech recognition models
+
+## 🎥 AI-Powered Video Understanding
+
+* Processes uploaded multimedia video content
+* Generates transcript-aware AI responses
+* Enables timestamp-based multimedia navigation
+
+## 🤖 Contextual AI Question Answering
+
+* Supports natural language interaction with uploaded multimedia
+* Generates context-aware semantic responses
+* Uses local and cloud-based LLM integration
+
+## ⏱ Timestamp-Based Playback Navigation
+
+* Detects relevant timestamps from generated AI responses
+* Allows direct navigation to important multimedia segments
+
+## 🌐 Modern Full-Stack Architecture
+
+* RESTful backend services using Spring Boot
+* Responsive frontend built with React and Vite
+* Persistent multimedia storage using PostgreSQL
+* Scalable deployment-ready architecture
 
 ---
 
-## 📂 Project Structure
+# 🤖 Hybrid AI Architecture
 
-ai-multimedia-knowledge-assistant/
-│
-├── backend/
-│   └── ai-multimedia-knowledge-assistant/
-│       ├── src/
-│       ├── Dockerfile
-│       ├── docker-compose.yml
-│       └── pom.xml
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-└── README.md
+The application uses a hybrid AI processing strategy optimized for both local development and public cloud deployment.
+
+## 🔹 Local Development Environment
+
+For local development and advanced multimedia experimentation, the system integrates:
+
+* Ollama Local LLMs
+* Whisper AI Speech-to-Text
+* FFmpeg Multimedia Processing
+
+This environment supports:
+
+* PDF processing
+* Audio transcription
+* Video understanding
+* Timestamp-aware multimedia navigation
+* Fully local AI inference
+
+### Local Models Used
+
+* Llama 3.2
+* Phi-3
+
+### Local Capabilities
+
+| Feature               | Local Support |
+| --------------------- | ------------- |
+| PDF Processing        | ✅             |
+| Audio Processing      | ✅             |
+| Video Processing      | ✅             |
+| Timestamp Navigation  | ✅             |
+| Whisper Transcription | ✅             |
+| Ollama Local LLMs     | ✅             |
 
 ---
 
-## ⚙️ Setup Instructions
+## 🔹 Public Cloud Deployment
 
-### 1. Clone Repository
+For lightweight and scalable public deployment, the application integrates:
 
+* Groq API
+* Cloud-hosted LLM inference
+
+The public deployment is optimized specifically for:
+
+* PDF processing
+* AI summarization
+* Contextual question answering
+
+This architecture was selected to:
+
+* simplify cloud deployment
+* improve response speed
+* reduce infrastructure complexity
+* avoid hosting large multimedia AI pipelines in production
+* optimize deployment costs on public cloud platforms
+
+### Public Deployment Capabilities
+
+| Feature                | Public Support |
+| ---------------------- | -------------- |
+| PDF Processing         | ✅              |
+| AI Summarization       | ✅              |
+| Question Answering     | ✅              |
+| Audio Processing       | ❌              |
+| Video Processing       | ❌              |
+| Whisper Transcription  | ❌              |
+| Local Ollama Inference | ❌              |
+
+---
+
+## 🔹 Hybrid AI Workflow
+
+```text
+Local Development:
+React → Spring Boot → Ollama + Whisper + FFmpeg
+
+Public Deployment:
+React → Spring Boot → Groq API
+```
+
+---
+
+## 🔹 Engineering Advantages
+
+The hybrid architecture demonstrates:
+
+* local LLM integration expertise
+* scalable AI application design
+* production deployment optimization
+* multimedia AI pipeline engineering
+* cloud deployment adaptability
+* real-world deployment tradeoff handling
+
+This approach enables:
+
+* advanced multimedia experimentation locally
+* lightweight cloud deployment for public accessibility
+
+---
+
+# 🛠️ Technology Stack
+
+## Backend
+
+* Java
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* REST APIs
+* Maven
+
+## Frontend
+
+* React
+* Vite
+* Axios
+* CSS3
+* React Hot Toast
+
+## AI & Multimedia
+
+* Ollama
+* Groq API
+* Whisper AI
+* FFmpeg
+* Local LLM Integration
+
+## Database
+
+* PostgreSQL
+* Neon PostgreSQL
+
+## Deployment & Hosting
+
+* Render
+* Neon
+* GitHub
+
+---
+
+# 🏗️ System Architecture
+
+```text
+React Frontend
+       ↓
+Spring Boot REST APIs
+       ↓
+AI Processing Layer
+(Ollama + Groq + Whisper + FFmpeg)
+       ↓
+PostgreSQL Database (Neon)
+```
+
+---
+
+# ☁️ Deployment Architecture
+
+The application is fully deployed using cloud-native services.
+
+## Frontend Deployment
+
+* Hosted on Render Static Hosting
+* Global CDN delivery
+* Auto deployment from GitHub
+
+## Backend Deployment
+
+* Hosted on Render Docker Environment
+* Spring Boot production deployment
+* REST API infrastructure
+
+## Database Deployment
+
+* PostgreSQL hosted on Neon
+* Cloud-native managed database
+* Persistent production data storage
+
+---
+
+# 🔄 CI/CD Workflow
+
+The project uses automatic deployment through GitHub integration.
+
+```text
+Code Changes
+     ↓
+Git Push
+     ↓
+Render Auto Deploy
+     ↓
+Production Application Updated
+```
+
+Every push to the connected GitHub branch automatically triggers:
+
+* frontend rebuild
+* backend redeployment
+* production synchronization
+
+This demonstrates:
+
+* CI/CD workflow understanding
+* cloud deployment experience
+* production infrastructure management
+* automated deployment pipeline integration
+
+---
+
+# 📸 Application Modules
+
+## Home Interface
+
+* Modern AI SaaS-inspired responsive UI
+* Interactive multimedia upload support
+* Feature-oriented landing page
+
+## PDF Intelligence Module
+
+* AI-generated summaries
+* Contextual semantic question answering
+* Document understanding pipeline
+
+## Audio & Video Processing Module
+
+* Multimedia transcription generation
+* Timestamp-aware playback
+* AI-assisted multimedia interaction
+
+---
+
+# ⚙️ Installation & Setup
+
+## 1️⃣ Clone Repository
+
+```bash
 git clone https://github.com/Suvarna6612/ai-multimedia-knowledge-assistant.git
-cd ai-multimedia-knowledge-assistant
+```
 
-### 2. Start Backend and PostgreSQL
+---
 
-cd backend/ai-multimedia-knowledge-assistant
-docker compose up --build
+## 2️⃣ Backend Setup
 
-### 3. Start Frontend
+```bash
+cd backend
+```
 
-Open a new terminal:
+### Configure Environment Variables
 
+```env
+SPRING_DATASOURCE_URL=
+SPRING_DATASOURCE_USERNAME=
+SPRING_DATASOURCE_PASSWORD=
+
+GROQ_API_KEY=
+
+OLLAMA_BASE_URL=http://localhost:11434
+```
+
+### Run Backend Service
+
+```bash
+mvn spring-boot:run
+```
+
+Backend Server:
+
+```text
+http://localhost:8080
+```
+
+---
+
+## 3️⃣ Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
-### 4. Open Application
+Frontend Server:
 
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:8080
-- Health Check: http://localhost:8080/actuator/health
-
----
-
-## 📡 API Endpoints
-
-### Upload File
-POST /api/files/upload
-
-### Ask Question
-POST /api/chat/ask
-
-### Health Check
-GET /actuator/health
+```text
+http://localhost:5173
+```
 
 ---
 
-## 🐳 Docker Commands
+# 📂 Supported File Formats
 
-### Start Containers
-docker compose up --build
+## Documents
 
-### Stop Containers
-docker compose down
+* PDF (.pdf)
 
-### View Running Containers
-docker ps
+## Audio
 
----
+* MP3 (.mp3)
+* WAV (.wav)
+* MPEG (.mpeg)
+* AAC (.aac)
+* M4A (.m4a)
 
-## 🗄️ Database Tables
+## Video
 
-- uploaded_files
-- transcript_segments
-
----
-
-## 🎯 Resume Highlights
-
-- Developed a full-stack AI application that processes PDF, audio, and video files and answers context-based questions.
-- Implemented timestamp-based playback for multimedia content using transcript segment matching.
-- Integrated PostgreSQL with Spring Data JPA for persistent storage.
-- Containerized the application using Docker and Docker Compose for production-style deployment.
+* MP4 (.mp4)
+* MOV (.mov)
+* AVI (.avi)
+* MKV (.mkv)
 
 ---
 
-## 🔮 Future Enhancements
+# 🚀 Future Enhancements
 
-- User authentication and authorization
-- Cloud deployment
-- Semantic vector search
-- Multi-language transcription
-- Analytics dashboard
-
----
-
-## 👨‍💻 Author
-
-Suvarna
-
-GitHub: https://github.com/Suvarna6612
+* Retrieval-Augmented Generation (RAG)
+* Vector Database Integration
+* Real-Time Streaming Transcription
+* Multi-Language AI Support
+* Authentication & Authorization
+* Cloud-Based File Storage
+* Semantic Multimedia Search
+* Persistent AI Conversation History
+* Streaming AI Responses
 
 ---
 
-## ⭐ Repository
+# 👨‍💻 Author
 
-https://github.com/Suvarna6612/ai-multimedia-knowledge-assistant
+Developed by Suvarna Chandarlapati
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving the repository a star ⭐
