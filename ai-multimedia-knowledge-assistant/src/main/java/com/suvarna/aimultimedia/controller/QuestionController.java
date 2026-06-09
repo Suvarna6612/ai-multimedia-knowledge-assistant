@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.suvarna.aimultimedia.service.TimestampService;
+import com.suvarna.aimultimedia.service.impl.OllamaServiceImpl;
+
 
 @RestController
 @RequestMapping("/api/questions")
@@ -20,6 +22,8 @@ public class QuestionController {
     private final ChatService chatService;
     private final UploadedFileRepository uploadedFileRepository;
     private final TimestampService timestampService;
+    private final OllamaServiceImpl ollamaService;
+
 
     @PostMapping("/ask")
     public ResponseEntity<ApiResponseDto<QuestionResponseDto>> askQuestion(
@@ -45,7 +49,13 @@ public class QuestionController {
         }
 
         // Ask AI
-        String answer = chatService.askQuestion(context, request.getQuestion());
+        String answer;
+
+        if (latestFile.getFileType().equals("PDF")) {
+            answer = chatService.askQuestion(context, request.getQuestion());
+        } else {
+            answer = ollamaService.askQuestion(context, request.getQuestion());
+        }
 
         // Create response DTO
         Double timestamp =

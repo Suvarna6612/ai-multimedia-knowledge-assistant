@@ -1,39 +1,460 @@
+/* =========================
+   GLOBAL
+========================= */
+
 body {
   margin: 0;
+  padding: 0;
+
   font-family: Arial, sans-serif;
-  background-color: #f5f7fb;
-}
 
-.app-container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-}
+  background:
+    radial-gradient(circle at top left,
+      #1e3a8a 0%,
+      #020617 45%);
 
-h1 {
-  text-align: center;
-  color: #333;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  background-color: #1976d2;
   color: white;
+
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   MAIN APP
+========================= */
+
+.App {
+  width: 100%;
+
+  max-width: 1450px;
+
+  margin: auto;
+
+  padding: 60px 40px 80px;
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-section {
+  text-align: center;
+
+  margin-bottom: 90px;
+}
+
+.main-title {
+  font-size: 7rem;
+
+  font-weight: 900;
+
+  line-height: 1.05;
+
+  margin-bottom: 30px;
+
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #60a5fa,
+    #818cf8
+  );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  max-width: 1100px;
+
+  margin: auto;
+
+  font-size: 1.4rem;
+
+  line-height: 1.9;
+
+  color: #d1d5db;
+}
+
+
+/* =========================
+   FEATURE GRID
+========================= */
+
+.features-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 40px;
+
+  margin-top: 80px;
+}
+
+.feature-card {
+  background: rgba(15, 23, 42, 0.96);
+
+  border: 1px solid rgba(59, 130, 246, 0.22);
+
+  border-radius: 30px;
+
+  padding: 60px 40px;
+
+  text-align: center;
+
+  transition: 0.3s ease;
+
+  box-shadow:
+    0 0 30px rgba(59, 130, 246, 0.08);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 0 45px rgba(59, 130, 246, 0.22);
+}
+
+.feature-card h2 {
+  font-size: 3rem;
+
+  line-height: 1.2;
+
+  margin-bottom: 30px;
+
+  font-weight: 800;
+}
+
+.feature-card p {
+  font-size: 1.2rem;
+
+  line-height: 1.9;
+
+  color: #d1d5db;
+}
+
+
+/* =========================
+   UPLOAD SECTION
+========================= */
+
+.upload-section {
+  margin-top: 100px;
+
+  background: rgba(15, 23, 42, 0.96);
+
+  border: 1px solid rgba(59, 130, 246, 0.22);
+
+  border-radius: 34px;
+
+  padding: 60px 50px;
+
+  text-align: center;
+
+  box-shadow:
+    0 0 35px rgba(59, 130, 246, 0.12);
+}
+
+.upload-title {
+  font-size: 3.3rem;
+
+  font-weight: 800;
+
+  margin-bottom: 20px;
+}
+
+.upload-subtitle {
+  color: #d1d5db;
+
+  font-size: 1.2rem;
+
+  line-height: 1.9;
+
+  margin-bottom: 45px;
+}
+
+.upload-input {
+  width: 100%;
+
+  background: #1e293b;
+
+  border: 1px solid rgba(148, 163, 184, 0.15);
+
+  border-radius: 18px;
+
+  padding: 20px;
+
+  color: white;
+
+  font-size: 1rem;
+
+  margin-bottom: 25px;
+}
+
+.upload-btn {
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #9333ea
+  );
+
+  border: none;
+
+  color: white;
+
+  padding: 18px 44px;
+
+  border-radius: 18px;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
   cursor: pointer;
+
+  transition: 0.3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(59, 130, 246, 0.28);
 }
 
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.upload-btn:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 20px 40px rgba(147, 51, 234, 0.4);
 }
 
-input,
-textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
+
+/* =========================
+   FILE BADGE
+========================= */
+
+.file-badge {
+  margin-top: 15px;
+
+  margin-bottom: 28px;
+
+  color: #38bdf8;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+.loader {
+  width: 22px;
+
+  height: 22px;
+
+  border: 3px solid rgba(255,255,255,0.3);
+
+  border-top: 3px solid white;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================
+   SUMMARY CARD
+========================= */
+
+.summary-card {
+  margin-top: 60px;
+
+  background: rgba(15, 23, 42, 0.96);
+
+  border-radius: 30px;
+
+  padding: 50px;
+
+  border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.summary-card h2 {
+  font-size: 2.5rem;
+
+  margin-bottom: 25px;
+}
+
+.summary-text {
+  color: #d1d5db;
+
+  line-height: 2;
+
+  font-size: 1.12rem;
+}
+
+
+/* =========================
+   MEDIA CARD
+========================= */
+
+.media-card {
+  margin-top: 50px;
+
+  background: rgba(15, 23, 42, 0.96);
+
+  border-radius: 30px;
+
+  padding: 45px;
+
+  border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.media-card h2 {
+  font-size: 2.3rem;
+
+  margin-bottom: 30px;
+}
+
+video,
+audio {
+  width: 100%;
+
+  border-radius: 18px;
+}
+
+
+/* =========================
+   CHAT SECTION
+========================= */
+
+.chat-card {
+  margin-top: 60px;
+
+  background: rgba(15, 23, 42, 0.96);
+
+  border-radius: 30px;
+
+  padding: 50px;
+
+  border: 1px solid rgba(59, 130, 246, 0.18);
+
+  text-align: center;
+}
+
+.chat-card h2 {
+  font-size: 2.6rem;
+
+  margin-bottom: 35px;
+}
+
+.chat-input {
+  width: 100%;
+
+  background: #1e293b;
+
+  border: 1px solid rgba(148, 163, 184, 0.15);
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  color: white;
+
+  font-size: 1rem;
+
+  resize: none;
+
+  margin-bottom: 30px;
+}
+
+.answer-box {
+  margin-top: 40px;
+
+  background: #1e293b;
+
+  border-radius: 24px;
+
+  padding: 40px;
+}
+
+.answer-box h3 {
+  font-size: 2rem;
+
+  margin-bottom: 25px;
+}
+
+.answer-box p {
+  color: #d1d5db;
+
+  line-height: 2;
+
+  font-size: 1.08rem;
+}
+
+.timestamp {
+  margin-top: 30px !important;
+
+  color: #38bdf8 !important;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  margin-top: 80px;
+
+  text-align: center;
+
+  color: #94a3b8;
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+
+  padding-bottom: 40px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .main-title {
+    font-size: 4rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card h2 {
+    font-size: 2.2rem;
+  }
+
+  .upload-title {
+    font-size: 2.4rem;
+  }
+
+  .App {
+    padding: 40px 20px 60px;
+  }
 }

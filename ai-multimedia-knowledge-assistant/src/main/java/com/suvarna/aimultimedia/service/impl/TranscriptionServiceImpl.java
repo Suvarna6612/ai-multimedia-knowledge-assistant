@@ -11,9 +11,11 @@ public class TranscriptionServiceImpl implements TranscriptionService {
 
     @Override
     public String transcribe(File file) {
+
         try {
+
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    "py", "-3.14", "-m", "whisper",
+                    "whisper",
                     file.getAbsolutePath(),
                     "--model", "tiny",
                     "--language", "en",
@@ -22,14 +24,15 @@ public class TranscriptionServiceImpl implements TranscriptionService {
             );
 
             processBuilder.redirectErrorStream(true);
+
             Process process = processBuilder.start();
 
-            // Read Whisper output continuously
             try (java.io.BufferedReader reader =
                          new java.io.BufferedReader(
                                  new java.io.InputStreamReader(process.getInputStream()))) {
 
                 String line;
+
                 while ((line = reader.readLine()) != null) {
                     System.out.println("WHISPER: " + line);
                 }
@@ -38,11 +41,11 @@ public class TranscriptionServiceImpl implements TranscriptionService {
             int exitCode = process.waitFor();
 
             if (exitCode != 0) {
-                throw new RuntimeException(
-                        "Whisper failed with exit code: " + exitCode);
+                return "Failed to transcribe media.";
             }
 
             String fileName = file.getName();
+
             String baseName =
                     fileName.substring(0, fileName.lastIndexOf('.'));
 
@@ -50,18 +53,17 @@ public class TranscriptionServiceImpl implements TranscriptionService {
                     new File(file.getParent(), baseName + ".txt");
 
             if (!transcriptFile.exists()) {
-                throw new RuntimeException(
-                        "Whisper did not generate transcript file: "
-                                + transcriptFile.getAbsolutePath());
+                return "Transcript not generated.";
             }
 
-            // Read the TXT file and return it directly
             return java.nio.file.Files.readString(
                     transcriptFile.toPath());
 
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(
-                    "Failed to transcribe media file", e);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return "Media transcription failed.";
         }
     }
 }
